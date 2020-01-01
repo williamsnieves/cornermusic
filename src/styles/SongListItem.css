@@ -1,0 +1,29 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: calc(100vw - 5%);
+  margin: 0 auto;
+}
+
+.default-header-column {
+  color: #747b81;
+}
+
+.sorted-columns {
+  color: #d4461d;
+}
+
+.song-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+}
+
+.song-cell p {
+  padding-left: 0.5em;
+}
+
+.list-item-hover:hover {
+  background-color: #202224;
+}

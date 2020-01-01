@@ -1,39 +1,30 @@
-import React from 'react'
-import searchIcon from './assets/magnifying-glass_search-bar.svg'
-import './App.css'
+import React, { useState } from "react";
+import SearchPlaceHolder from "./components/SearchPlaceHolder";
+import SearchHeader from "./components/SearchHeader";
+import SongListContainer from "./components/SongListContainer";
+import SongDetailContainer from "./components/SongDetailContainer";
+import "./App.css";
 
-function App () {
+function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const onHandleSearch = event => {
+    setSearchTerm(event.target.value);
+  };
   return (
-    <div className='App'>
-      <header className='header'>
-        <h1>Corner job Music Player</h1>
-        <input type='text'></input>
+    <div className="App">
+      <header className="header">
+        <SearchHeader
+          headerTitle="Corner job Music Player"
+          onHandleSearch={onHandleSearch}
+        />
       </header>
-      <section className='item-container'>
-        <div>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='23.97'
-            height='23.969'
-            viewBox='0 0 23.97 23.969'
-            className='searchIcon'
-          >
-            ><defs></defs>
-            <path
-              id='Search'
-              className='cls-1'
-              d='M1222.3,261.3a2.249,2.249,0,0,1-3.18,0l-3.97-3.971a10.553,10.553,0,1,1,3.18-3.182l3.97,3.971A2.248,2.248,0,0,1,1222.3,261.3ZM1209.5,241a7.5,7.5,0,1,0,7.5,7.5A7.5,7.5,0,0,0,1209.5,241Z'
-              transform='translate(-1199 -238)'
-            />
-          </svg>
-
-          <p className='item-container-placeholder'>
-            Use the search bar to find song
-          </p>
-        </div>
-      </section>
+      {/*<section className="item-container">
+        <SearchPlaceHolder title="Use the search bar to find song" />
+  </section>*/}
+      {/*<SongListContainer songData={[]} artistTerm={searchTerm} />*/}
+      <SongDetailContainer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
