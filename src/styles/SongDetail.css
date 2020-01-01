@@ -1,0 +1,22 @@
+.song-detail-container {
+  display: flex;
+  width: 100vw;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 5em 0 0 0;
+}
+
+.detail-content {
+  margin: 0;
+}
+
+.detail-content:first-of-type {
+  margin: 1em 0 0.5em 0;
+}
+
+.song-thumbnail {
+  border: 1px solid #fff;
+  box-shadow: 7px 6px 17px 1px #000;
+}
