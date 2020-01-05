@@ -1,28 +1,13 @@
-import React, { useState } from "react";
-import SearchPlaceHolder from "./components/SearchPlaceHolder";
-import SearchHeader from "./components/SearchHeader";
-import SongListContainer from "./components/SongListContainer";
-import SongDetailContainer from "./components/SongDetailContainer";
-import "./App.css";
+import React from "react";
+import Dashboard from "./components/Dashboard";
+import { Router } from "@reach/router";
 
-function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const onHandleSearch = event => {
-    setSearchTerm(event.target.value);
-  };
+function App(props) {
   return (
-    <div className="App">
-      <header className="header">
-        <SearchHeader
-          headerTitle="Corner job Music Player"
-          onHandleSearch={onHandleSearch}
-        />
-      </header>
-      {/*<section className="item-container">
-        <SearchPlaceHolder title="Use the search bar to find song" />
-  </section>*/}
-      {/*<SongListContainer songData={[]} artistTerm={searchTerm} />*/}
-      <SongDetailContainer />
+    <div data-testid="main-container">
+      <Router>
+        <Dashboard path="/" />
+      </Router>
     </div>
   );
 }

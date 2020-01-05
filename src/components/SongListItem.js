@@ -1,7 +1,14 @@
 import React from "react";
 import "../styles/SongListItem.css";
 
-const SongListItem = () => {
+function millisToMinutesAndSeconds(millis) {
+  var minutes = Math.floor(millis / 60000);
+  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+
+const SongListItem = ({ songsData, onHandleDetail }) => {
+  console.log("-----songsData", songsData);
   return (
     <div style={{ overflowX: "auto" }}>
       <table>
@@ -16,60 +23,26 @@ const SongListItem = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="list-item-hover">
-            <td>
-              <div className="song-cell">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3TlGSNIH6xnyj5wV3f_trehnunWBJNINVZyL510Wr0UuWjeegw&s"
-                  width="50"
-                  height="50"
-                  alt=""
-                ></img>
-                <p>Beally jean</p>
-              </div>
-            </td>
-            <td>Michael Jackson</td>
-            <td>Thriller</td>
-            <td>3:06</td>
-            <td>Pop</td>
-            <td>0,90€</td>
-          </tr>
-          <tr className="list-item-hover">
-            <td>
-              <div className="song-cell">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3TlGSNIH6xnyj5wV3f_trehnunWBJNINVZyL510Wr0UuWjeegw&s"
-                  width="50"
-                  height="50"
-                  alt=""
-                ></img>
-                <p>Beally jean</p>
-              </div>
-            </td>
-            <td>Michael Jackson</td>
-            <td>Thriller</td>
-            <td>3:06</td>
-            <td>Pop</td>
-            <td>0,90€</td>
-          </tr>
-          <tr className="list-item-hover">
-            <td>
-              <div className="song-cell">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3TlGSNIH6xnyj5wV3f_trehnunWBJNINVZyL510Wr0UuWjeegw&s"
-                  width="50"
-                  height="50"
-                  alt=""
-                ></img>
-                <p>Beally jean</p>
-              </div>
-            </td>
-            <td>Michael Jackson</td>
-            <td>Thriller</td>
-            <td>3:06</td>
-            <td>Pop</td>
-            <td>0,90€</td>
-          </tr>
+          {songsData.map(song => (
+            <tr className="list-item-hover" onClick={onHandleDetail}>
+              <td>
+                <div className="song-cell">
+                  <img
+                    src={song.artworkUrl60}
+                    width="50"
+                    height="50"
+                    alt=""
+                  ></img>
+                  <p>{song.trackName}</p>
+                </div>
+              </td>
+              <td>{song.artistName}</td>
+              <td>{song.collectionName}</td>
+              <td>{millisToMinutesAndSeconds(song.trackTimeMillis)}</td>
+              <td>{song.primaryGenreName}</td>
+              <td>{`${song.trackPrice}${song.currency}`}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

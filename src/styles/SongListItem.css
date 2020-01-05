@@ -15,7 +15,7 @@ table {
 
 .song-cell {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 0.5em;
 }
@@ -26,4 +26,5 @@ table {
 
 .list-item-hover:hover {
   background-color: #202224;
+  cursor: pointer;
 }
