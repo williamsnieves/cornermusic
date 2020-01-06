@@ -1,14 +1,20 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
+import React, { useState, useEffect } from "react";
+import { jsx } from "@emotion/core";
 import SongListItem from "./SongListItem";
-import "../styles/SongList.css";
+import { songListSearchResult } from "../styles/SongList";
 
 const SongListContainer = ({ songsData, artistTerm, onHandleDetail }) => {
   return (
     <div>
-      <div className="song-list-search-result">
+      <div css={songListSearchResult}>
         <h1>Searching "{artistTerm}"</h1>
       </div>
-      <SongListItem songsData={songsData} onHandleDetail={onHandleDetail} />
+      <SongListItem
+        songsData={songsData}
+        onHandleDetail={artistId => onHandleDetail(artistId)}
+      />
     </div>
   );
 };

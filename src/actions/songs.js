@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   FETCH_SONGS_REQUEST,
   FETCH_SONGS_FAILURE,
-  FETCH_SONGS_SUCCESS
+  FETCH_SONGS_SUCCESS,
+  RESET_SONGS
 } from "../types/songs";
 
 export const fetchSongsRequest = () => {
@@ -41,4 +42,10 @@ export const fetchSongs = term => (dispatch, getState) => {
     .catch(error => {
       dispatch(fetchSongsFailure(error));
     });
+};
+
+export const resetSongs = () => {
+  return {
+    type: RESET_SONGS
+  };
 };

@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
+import { controlsHover, lm1 } from "../../styles/Player";
 
-const NextIcon = () => {
+const NextIcon = ({ css }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="35"
       height="23"
       viewBox="0 0 35 23"
-      className="lm-1"
+      css={[controlsHover, lm1]}
     >
       <image
         id="next"

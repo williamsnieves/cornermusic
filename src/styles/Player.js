@@ -1,4 +1,6 @@
-.player {
+import { css } from "@emotion/core";
+
+export const PlayerContainer = css`
   position: fixed;
   bottom: 0;
   margin: 0 auto;
@@ -8,25 +10,29 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-}
+`;
 
-.social-buttons {
+export const socialButtons = css`
   align-self: flex-end;
   margin-right: 2em;
   display: flex;
   width: 120px;
   justify-content: space-between;
   align-items: center;
-}
+`;
 
-.player-buttons {
+export const playerButtons = css`
   margin-right: calc(100vw - 68%);
-}
+`;
 
-.lm-1 {
+export const lm1 = css`
   margin-left: 1em;
-}
+`;
 
-.rm-1 {
+export const rm1 = css`
   margin-right: 1em;
-}
+`;
+
+export const controlsHover = css`
+  cursor: pointer;
+`;

@@ -1,8 +1,14 @@
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
+import { controlsHover } from "../../styles/Player";
 
-const PauseIcon = () => {
+const PauseIcon = ({ onClick, css }) => {
   return (
     <svg
+      css={controlsHover}
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="25"

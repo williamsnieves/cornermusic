@@ -1,4 +1,8 @@
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
+import { searchIcon } from "../../styles/App";
 
 const SeachIcon = () => {
   return (
@@ -7,7 +11,7 @@ const SeachIcon = () => {
       width="23.97"
       height="23.969"
       viewBox="0 0 23.97 23.969"
-      className="searchIcon"
+      css={searchIcon}
     >
       ><defs></defs>
       <path

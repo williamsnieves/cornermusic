@@ -1,32 +1,40 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
+import React, { useState, useEffect } from "react";
+import { jsx } from "@emotion/core";
 import "../styles/SongListItem.css";
-
-function millisToMinutesAndSeconds(millis) {
-  var minutes = Math.floor(millis / 60000);
-  var seconds = ((millis % 60000) / 1000).toFixed(0);
-  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-}
+import {
+  tableContainer,
+  defaultHeaderColumn,
+  sortedColumn,
+  listItemHover,
+  songCell
+} from "../styles/SongListItem";
+import { millisToMinutesAndSeconds } from "../modules/utils";
 
 const SongListItem = ({ songsData, onHandleDetail }) => {
-  console.log("-----songsData", songsData);
   return (
     <div style={{ overflowX: "auto" }}>
-      <table>
+      <table css={tableContainer}>
         <thead>
           <tr>
-            <th className="default-header-column">Song</th>
-            <th className="default-header-column">Artist</th>
-            <th className="default-header-column">Album</th>
-            <th className="sorted-columns">Duration</th>
-            <th className="sorted-columns">Gender</th>
-            <th className="sorted-columns">Price</th>
+            <th css={defaultHeaderColumn}>Song</th>
+            <th css={defaultHeaderColumn}>Artist</th>
+            <th css={defaultHeaderColumn}>Album</th>
+            <th css={sortedColumn}>Duration</th>
+            <th css={sortedColumn}>Gender</th>
+            <th css={sortedColumn}>Price</th>
           </tr>
         </thead>
         <tbody>
           {songsData.map(song => (
-            <tr className="list-item-hover" onClick={onHandleDetail}>
+            <tr
+              key={song.trackId ? song.trackId : Math.random() * song.artistId}
+              css={listItemHover}
+              onClick={() => onHandleDetail(song.trackId)}
+            >
               <td>
-                <div className="song-cell">
+                <div css={songCell}>
                   <img
                     src={song.artworkUrl60}
                     width="50"

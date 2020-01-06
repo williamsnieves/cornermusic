@@ -1,18 +1,25 @@
-import React from "react";
-import "../styles/SongDetail.css";
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
+import React, { useState, useEffect } from "react";
+import { jsx } from "@emotion/core";
+import {
+  songDetailContainer,
+  songThumbnail,
+  detailContent
+} from "../styles/SongDetail";
 
 const SongDetail = ({ thumb, song, artist }) => {
   return (
-    <div className="song-detail-container">
+    <div css={songDetailContainer}>
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3TlGSNIH6xnyj5wV3f_trehnunWBJNINVZyL510Wr0UuWjeegw&s"
+        src={thumb}
         width="300"
         height="300"
         alt=""
-        className="song-thumbnail"
+        css={songThumbnail}
       ></img>
-      <p className="detail-content">{song}</p>
-      <p className="detail-content">{artist}</p>
+      <p css={detailContent}>{song}</p>
+      <p css={detailContent}>{artist}</p>
     </div>
   );
 };

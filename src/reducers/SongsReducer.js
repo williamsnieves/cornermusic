@@ -1,7 +1,8 @@
 import {
   FETCH_SONGS_REQUEST,
   FETCH_SONGS_FAILURE,
-  FETCH_SONGS_SUCCESS
+  FETCH_SONGS_SUCCESS,
+  RESET_SONGS
 } from "../types/songs";
 
 const initialState = {
@@ -32,6 +33,10 @@ const SongsReducer = (state = initialState, action) => {
         error: null
       };
 
+    case RESET_SONGS:
+      return {
+        ...initialState
+      };
     default:
       return state;
   }

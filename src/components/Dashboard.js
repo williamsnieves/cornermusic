@@ -1,55 +1,48 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+/** @jsx jsx */
+import React, { useEffect } from "react";
+import { jsx } from "@emotion/core";
 import { connect } from "react-redux";
 import SearchPlaceHolder from "../components/SearchPlaceHolder";
-import SearchHeader from "../components/SearchHeader";
 import SongListContainer from "../components/SongListContainer";
-import SongDetailContainer from "../components/SongDetailContainer";
-import useDebounce from "../components/hooks/useDebounce";
-import { fetchSongs } from "../actions/songs";
-import "../App.css";
+import { fetchSongs, resetSongs } from "../actions/songs";
+import { ClipLoader } from "react-spinners";
+import { App, override, itemContainer, spinnerContainer } from "../styles/App";
 
 function Dashboard(props) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const onHandleSearch = event => {
-    setSearchTerm(event.target.value);
+  const onHandleDetail = trackId => {
+    props.navigate(`/detail/${trackId}`);
   };
-
-  const onHandleDetail = () => {
-    console.log("go to detail of songs");
-  };
-
-  const debounceSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
-    props.fetchSongs(debounceSearchTerm);
-  }, [debounceSearchTerm]);
+    props.resetSongs();
+    props.fetchSongs(props.debounceSearchTerm);
+  }, [props.debounceSearchTerm]);
 
-  console.log("props------", props.songs);
   return (
     <React.Fragment>
-      <div className="App">
-        <header className="header">
-          <SearchHeader
-            headerTitle="Corner job Music Player"
-            onHandleSearch={onHandleSearch}
-          />
-        </header>
-
+      <div css={App}>
         {!props.songs && (
-          <section className="item-container">
+          <section css={itemContainer}>
             <SearchPlaceHolder title="Use the search bar to find song" />
           </section>
         )}
         {props.songs.data ? (
           <SongListContainer
             songsData={props.songs.data.data.results}
-            artistTerm={searchTerm}
+            artistTerm={props.searchTerm}
             onHandleDetail={onHandleDetail}
           />
         ) : (
-          <p>loading...</p>
+          <div css={spinnerContainer}>
+            <ClipLoader
+              css={override}
+              size={150}
+              color={"#ff5018"}
+              loading={true}
+            />
+          </div>
         )}
-        <SongDetailContainer />
       </div>
     </React.Fragment>
   );
@@ -61,4 +54,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSongs })(Dashboard);
+export default connect(mapStateToProps, { fetchSongs, resetSongs })(Dashboard);
