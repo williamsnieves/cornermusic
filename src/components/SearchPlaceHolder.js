@@ -7,7 +7,7 @@ import { itemContainerPlaceholder } from "../styles/App";
 
 const SearchPlaceHolder = ({ title }) => {
   return (
-    <div>
+    <div data-testid="placeholder-container">
       <SeachIcon />
       <p css={itemContainerPlaceholder}>{title}</p>
     </div>

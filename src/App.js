@@ -18,7 +18,7 @@ function App(props) {
 
   const debounceSearchTerm = useDebounce(searchTerm, 500);
   return (
-    <div data-testid="main-container">
+    <div>
       <header css={header}>
         <SearchHeader
           headerTitle="Corner job Music Player"

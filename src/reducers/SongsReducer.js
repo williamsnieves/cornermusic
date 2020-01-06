@@ -5,7 +5,7 @@ import {
   RESET_SONGS
 } from "../types/songs";
 
-const initialState = {
+export const initialState = {
   data: null,
   isLoading: false,
   error: null

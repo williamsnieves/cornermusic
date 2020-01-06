@@ -10,7 +10,7 @@ import {
 
 const SongDetail = ({ thumb, song, artist }) => {
   return (
-    <div css={songDetailContainer}>
+    <div css={songDetailContainer} data-testid="song-detail-content">
       <img
         src={thumb}
         width="300"

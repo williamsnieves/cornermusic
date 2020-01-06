@@ -14,7 +14,7 @@ import { millisToMinutesAndSeconds } from "../modules/utils";
 
 const SongListItem = ({ songsData, onHandleDetail }) => {
   return (
-    <div style={{ overflowX: "auto" }}>
+    <div style={{ overflowX: "auto" }} data-testid="song-list-item-container">
       <table css={tableContainer}>
         <thead>
           <tr>
@@ -32,6 +32,7 @@ const SongListItem = ({ songsData, onHandleDetail }) => {
               key={song.trackId ? song.trackId : Math.random() * song.artistId}
               css={listItemHover}
               onClick={() => onHandleDetail(song.trackId)}
+              data-testid="list-items"
             >
               <td>
                 <div css={songCell}>

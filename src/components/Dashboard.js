@@ -21,7 +21,7 @@ function Dashboard(props) {
 
   return (
     <React.Fragment>
-      <div css={App}>
+      <div css={App} data-testid="main-list-container">
         {!props.songs && (
           <section css={itemContainer}>
             <SearchPlaceHolder title="Use the search bar to find song" />
@@ -49,6 +49,7 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = state => {
+  console.log("state------", state);
   return {
     songs: state.songs
   };
