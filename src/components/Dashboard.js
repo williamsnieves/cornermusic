@@ -49,7 +49,6 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = state => {
-  console.log("state------", state);
   return {
     songs: state.songs
   };

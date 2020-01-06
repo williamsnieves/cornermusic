@@ -1,7 +1,6 @@
 import express from "express";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
-import config from "./config/";
 import cors from "cors";
 import songsRouter from "./resources/songs/songs.router";
 
@@ -14,9 +13,6 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.use("api/test", (req, res) => {
-  req.json({ data: "hola" });
-});
 app.use("/api/songs", songsRouter);
 
 export const start = () => {
